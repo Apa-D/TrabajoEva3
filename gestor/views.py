@@ -79,7 +79,7 @@ def note_delete(request, pk):
     if request.method == 'POST':
         note.delete()
         return redirect('dashboard')
-    return render(request, 'private/note_confirm_delete.html', {'object': note})
+    return render(request, 'private/confirm_delete.html', {'object': note})
 
 
 
@@ -104,4 +104,4 @@ def file_delete(request, pk):
         file_to_delete.file.delete() 
         file_to_delete.delete() 
         return redirect('dashboard')
-    return render(request, 'private/file_confirm_delete.html', {'object': file_to_delete})
+    return render(request, 'private/confirm_delete.html', {'object': file_to_delete})
