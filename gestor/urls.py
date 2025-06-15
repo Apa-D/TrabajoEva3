@@ -1,17 +1,22 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
 
-    path('', views.vista_publica, name='home'),
+    path('', views.public_home, name='public_home'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 
 
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/registro/', views.registro, name='registro'),
+    path('dashboard/', views.Inicio, name='dashboard'),
+    
+
+    path('notes/new/', views.note_create, name='note_create'),
+    path('notes/<int:pk>/edit/', views.note_update, name='note_update'),
+    path('notes/<int:pk>/delete/', views.note_delete, name='note_delete'),
 
 
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('notas/crear/', views.crear_nota, name='crear_nota'),
-    path('notas/<int:nota_id>/eliminar/', views.eliminar_nota, name='eliminar_nota'),
-
+    path('files/upload/', views.file_upload, name='file_upload'),
+    path('files/<int:pk>/delete/', views.file_delete, name='file_delete'),
 ]

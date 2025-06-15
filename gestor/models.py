@@ -1,21 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Nota(models.Model):
+class Note(models.Model):
     titulo = models.CharField(max_length=100)
-    contenido = models.TextField()
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo
-    
 
-class Archivo(models.Model):
-    nombre_archivo = models.CharField(max_length=255)
-    archivo = models.FileField(upload_to='archivos/')
-    fecha_subida = models.DateTimeField(auto_now_add=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+class UploadedFile(models.Model):
+    description = models.CharField(max_length=255)
+    file = models.FileField(upload_to='uploads/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nombre_archivo
+        return self.description

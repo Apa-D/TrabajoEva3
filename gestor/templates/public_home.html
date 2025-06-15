@@ -1,0 +1,35 @@
+{% extends 'default.html' %}
+
+{% block title %}Bienvenido a DPGestor{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <h1 class="display-4">Bienvenido a DPGestor</h1>
+    <p class="lead">Tu solución simple para guardar notas y archivos en la nube de forma segura.</p>
+    <hr class="my-4">
+    <p>Únete a nuestra comunidad y mantén tu información organizada.</p>
+    <div class="d-flex justify-content-center gap-2">
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">¡Empieza Ahora!</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'login' %}" role="button">Ya tengo una cuenta</a>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Notas Creadas</h5>
+                <p class="card-text display-4">{{ total_notes }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Archivos Guardados</h5>
+                <p class="card-text display-4">{{ total_files }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
